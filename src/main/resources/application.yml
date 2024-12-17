@@ -1,0 +1,46 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/shopapp?useSSL=false&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password:
+  jpa:
+    show-sql: true
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  message:
+    basename: i18n/messages
+    encoding: UTF-8
+    default-locale: en
+
+outbound:
+  identity:
+    client-id: my-client-id
+    client-secret: my-client-secret
+    redirect-uri: http://localhost:8080/redirect
+
+api:
+  prefix: api/v1
+
+jwt:
+  expiration: 3600
+  secretKey: my-secret-key
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
